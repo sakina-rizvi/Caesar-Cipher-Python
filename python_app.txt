@@ -1,0 +1,46 @@
+def encrypt(plaintext, key):
+ciphertext = "
+
+for letter in plaintext:
+
+if letter.isalpha():
+
+if letter.isupper():
+
+ciphertext += chr((ord(letter) + key - 65) % 26 + 65)
+else:
+
+ciphertext += chr((ord(letter) + key - 97) % 26 + 97)
+
+else:
+
+ciphertext += letter
+
+return ciphertext
+
+encrypted_text = encrypt('hello world', 7)
+print(encrypted_text)
+def decrypt(ciphertext, key):
+decrypted_text = "'
+
+for letter in ciphertext:
+if letter.isalpha():
+if letter.isupper():
+decrypted_text += chr((ord(letter) - key - 65) % 26 + 65)
+else:
+
+decrypted_text += chr((ord(letter) - key - 97) % 26 + 97)
+
+else:
+
+decrypted_text += letter
+
+return decrypted_text
+
+# Taking input from the user
+ciphertext = input("Enter the encrypted message: ")
+key = int(input("Enter the decryption key (a number between 1 and 25): "))
+
+# Decrypting the input ciphertext
+decrypted_text = decrypt(ciphertext, key)
+print("Decrypted message:", decrypted_text)
